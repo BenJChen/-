@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>单例模式</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var CreateDiv = function(html){
+        this.html = html;
+        this.init();
+    }
+    CreateDiv.prototype.init = function(){
+        var div = document.createElement('div');
+        div.innerHTML =  this.html;
+        document.body.appendChild(div);
+    }
+    var SingleonDiv = (function(){
+        var instance;
+        return function(html){
+            if(!instance){
+                instance = new CreateDiv(html);
+            }
+            return instance;
+        }
+    })()
+    var a = SingleonDiv("111111");
+    var b = SingleonDiv("222222"); 
+</script>
+</html>

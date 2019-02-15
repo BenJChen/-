@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>工厂模式-ES6</title>
+</head>
+<body>
+    
+</body>
+<script>
+    class Role{
+        constructor(opt){
+            this.skill = opt.skill;
+            this.blood = opt.blood;
+            this.hit = opt.hit;
+            console.log(this);
+        }
+        static getInstance(role){
+            switch(role){
+                case "warrior": return new Role({skill:"回血",blood:300,hit:8});break;
+                case "mage": return new Role({skill:"冰冻",blood:200,hit:5});break;
+                case "archer": return new Role({skill:"消耗",blood:180,hit:10});break;
+                default:throw new Error('参数错误, 可选参数:warrior、mage、archer')
+            }
+        }
+    }
+
+    let warrior = Role.getInstance("warrior");
+    let mage = Role.getInstance("mage");
+    let archer = Role.getInstance("archer");
+
+</script>
+</html>

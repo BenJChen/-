@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>工厂模式</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function Warrior(){
+        this.skill = "回血";
+        this.blood = 300;
+        this.hit = 8;
+        console.log(this);
+    }
+    function Mage(){
+        this.skill = "冰冻";
+        this.blood = 200;
+        this.hit = 5;
+        console.log(this);
+    }
+    function Archer(){
+        this.skill = "消耗";
+        this.blood = 180;
+        this.hit = 10;
+        console.log(this);
+    }
+    var RoleFactory = function(role){
+        return new role();
+    }
+    var warrior = RoleFactory(Warrior);
+    var mage = RoleFactory(Mage);
+    var archer = RoleFactory(Archer);
+
+</script>
+</html>

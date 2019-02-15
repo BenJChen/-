@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>装饰者模式</title>
+</head>
+<body>
+</body>
+<script>
+    /*
+        定义：装饰者(decorator)模式能够在不改变对象自身的基础上，在程序运行期间给对象动态的添加职责。
+        装饰者用于通过重载方法的形式添加新功能，该模式可以在被装饰者前面或者后面加上自己的行为以达到特定的目的。与继承相比，装饰者是一种更轻便灵活的做法。
+        举例：雷霆战机（吃道具的例子）
+    */
+    var plane = {
+        fire:function(){
+            console.log("发射普通子弹");
+        }
+    }
+    plane.fire();
+
+    var fire1 = plane.fire;
+    var shot = function(){
+        console.log("发射散弹");
+    }
+    plane.fire = function(){
+        fire1();
+        shot();
+    }
+    plane.fire();
+
+    var fire2 = plane.fire;
+    var track = function(){
+        console.log("发射导弹");
+    }
+    plane.fire = function(){
+        fire2();
+        track();
+    }
+    plane.fire();
+</script>
+</html>

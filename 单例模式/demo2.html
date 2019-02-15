@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>单例模式-ES6</title>
+</head>
+<body>
+    
+</body>
+<script>
+class CreatDiv{
+    constructor(html){
+        this.html = html;
+        this.init();
+    }
+    init(){
+        const div = document.createElement("div");
+        div.innerHTML = this.html;
+        document.body.appendChild(div);
+    }
+}
+
+class ProxySingletonCreateDiv{
+    constructor(html){
+        return ProxySingletonCreateDiv.getInstance(html);
+    }
+    static getInstance(name){
+        if(!ProxySingletonCreateDiv.instance){
+            ProxySingletonCreateDiv.instance = new CreatDiv(name);
+        }
+        return ProxySingletonCreateDiv.instance;
+    }
+}
+const singletonC = new ProxySingletonCreateDiv('1111111');
+const singletonD = new ProxySingletonCreateDiv('2222222');
+</script>
+</html>

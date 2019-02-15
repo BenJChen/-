@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组合模式</title>
+</head>
+<body>
+</body>
+<script>
+    /*
+        定义：组合模式（Composite）将对象组合成树形结构以表示“部分-整体”的层次结构，组合模式使得用户对单个对象（子对象）和组合对象的使用具有一致性。
+
+        举例：文件扫描（目录为组合对象和文件为子对象）、dom节点操作
+    */
+    let Folder = function(name){
+        this.name = name;
+        this.files = [];
+    };
+    Folder.prototype.add = function(file){
+        this.files.push(file);
+    };
+    Folder.prototype.scan = function(){
+        console.log("开始文件扫描"+this.name);
+        for(var i=0;i<this.files.length;i++){
+            this.files[i].scan();
+        }
+    }
+
+    let Files = function(name){
+        this.name = name;
+    };
+    Files.prototype.add = function(){
+        throw new Error("文件下面不能再添加文件");
+    };
+    Files.prototype.scan = function(){
+        console.log("开始扫描："+this.name);
+    };
+
+    let folder3 = new Folder("前端学习");
+    let folder1 = new Folder("JS学习");
+    let folder2 = new Folder("JQ学习");
+
+    let file1 = new Files("前端性能");
+    let file2 = new Files("JS设计模式");
+    let file3 = new Files("JQ实战");
+
+    folder1.add(file2);
+    folder2.add(file3);
+    folder3.add(folder1);
+    folder3.add(folder2);
+    folder3.add(file1);
+    folder3.scan();
+</script>
+</html>

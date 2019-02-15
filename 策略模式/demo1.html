@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>策略模式</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //分等级绩效计算
+    const Bouns = {
+        A(salary){
+            return salary*4;
+        },
+        B(salary){
+            return salary*2;
+        },
+        C(salary){
+            return salary*1;
+        }
+    };
+    Object.freeze(Bouns);
+    Bouns.A =111
+    
+    const calculateBouns = function(type,salary){
+        return Bouns[type](salary);
+    }
+    console.log(calculateBouns("A",15000));
+    console.log(calculateBouns("B",13000));
+    console.log(calculateBouns("C",10000));
+
+
+</script>
+</html>
